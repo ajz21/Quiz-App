@@ -137,7 +137,7 @@ body {
 }
 
 .info-img {
-    height: 22px;
+    height: 20px;
 }
 
 .quiz-rules div {
@@ -154,7 +154,7 @@ body {
     height: 435px;
     padding: 0pc;
     margin-top: 5pc;
-    /* display: none; */
+    display: none;
 }
 
 .quiz-rules button {
