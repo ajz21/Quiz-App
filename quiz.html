@@ -12,56 +12,76 @@
 <body>
     <div class="heading">
         <h3>QUIZ APP</h3>
-        <div class="timer">
+        <div class="timer time-display">
             10
         </div>
     </div>
     <div class="quiz-container">
         <div class="quiz-modules" id="qM1">
             <h2>Political Science</h2>
-            <div class="quiz-test">
-                <p class="question">1. Who was the Prime Minister of U.K during WWII?</p>
-                <p class="answer">Margaret Thatcher</p>
-                <p class="answer">Clement Attlee</p>
-                <p class="answer">William Ewart Gladstone</p>
-                <p class="answer">Winston Churchill</p>
+            <div class="quiz-template">
+                <div class="quiz-screen">
+                    <div class="quiz-test">
+                        <p class="question">1. Who was the Prime Minister of U.K during WWII?</p>
+                        <p class="answer">Margaret Thatcher</p>
+                        <p class="answer">Clement Attlee</p>
+                        <p class="answer">William Ewart Gladstone</p>
+                        <p class="answer">Winston Churchill</p>
+                    </div>
+                    <div class="quiz-test">
+                        <p class="question">2. Since the end of the Cold War, the world is said to be as?</p>
+                        <p class="answer">Unipolar</p>
+                        <p class="answer">Bipolar</p>
+                        <p class="answer">Regional</p>
+                        <p class="answer">Conservative</p>
+                    </div>
+                    <div class="quiz-test">
+                        <p class="question">3. Which of the following are not a nuclear state?</p>
+                        <p class="answer">India</p>
+                        <p class="answer">Usa</p>
+                        <p class="answer">Pakistan</p>
+                        <p class="answer">Israel</p>
+                    </div>
+                    <div class="quiz-test">
+                        <p class="question">4. Which of these is the chief court of the UN?</p>
+                        <p class="answer">Permanent Court of International Justice (PCIJ)</p>
+                        <p class="answer">International Criminal Court (ICC)</p>
+                        <p class="answer">International Court of Justice (ICJ)</p>
+                        <p class="answer">European Court of Justice (ECJ)</p>
+                    </div>
+                    <div class="quiz-test">
+                        <p class="question">5. The global spread of capitalism after the Cold War led to</p>
+                        <p class="answer">Greater Equality</p>
+                        <p class="answer">More Justice</p>
+                        <p class="answer">Greater Polarisation Of Wealth</p>
+                        <p class="answer">More Injustice</p>
+                    </div>
+                </div>
             </div>
-            <!-- <div class="quiz-test">
-                <p class="question"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-            </div>
-            <div class="quiz-test">
-                <p class="question"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-            </div>
-            <div class="quiz-test">
-                <p class="question"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-            </div>
-            <div class="quiz-test">
-                <p class="question"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-                <p class="answer"></p>
-            </div> -->
         </div>
         <div class="quiz-modules" id="qM2">
-            <h2>Sports</h2>
+            <h2>Economics</h2>
         </div>
         <div class="quiz-modules" id="qM3">
             <h2>Create Custom quizes</h2>
         </div>
     </div>
+    <div class="quiz-container quiz-rules">
+        <p style="opacity: 60%; font-size: 33px; text-align: center;">Welcome to the BattleGround!</p>
+        <div>
+            <img src="icons/info.png" alt="" class="info-img">
+            <p>You will have 10 seconds to answer each question</p>
+        </div>
+        <div><img src="icons/info.png" alt="" class="info-img">
+            <p>Answer to the question will be displayed after you attempt the question</p>
+        </div>
+        <div><img src="icons/info.png" alt="" class="info-img">
+            <p>you will automatically pass into the next question after 10 second</p>
+        </div>
+        <p>Good Luck!</p>
+        <button>Enter</button>
+    </div>
+    <script src="quiz.js"></script>
 </body>
 
 </html>
