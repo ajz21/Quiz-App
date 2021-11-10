@@ -58,6 +58,7 @@ body {
     font-family: var(--font);
     font-size: 20px;
     color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 .quiz-screen {
@@ -72,6 +73,8 @@ body {
     width: 465px;
     overflow: hidden;
     display: none;
+    /* color: rgb(219, 255, 219); */
+    /* color: rgb(255, 219, 219); */
 }
 
 .quiz-test {
@@ -155,6 +158,10 @@ body {
     padding: 0pc;
     margin-top: 5pc;
     display: none;
+}
+
+.quiz-rules-display {
+    display: flex;
 }
 
 .quiz-rules button {
