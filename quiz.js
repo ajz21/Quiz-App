@@ -1,11 +1,30 @@
-const pol_quiz = {
-    1: 'Winston Churchill',
-    2: 'Unipolar',
-    3: 'Israel',
-    4: 'International Court of Justice (ICJ)',
-    5: 'Greater Polarisation Of Wealth',
-};
-// const pol_quiz = ['Winston Churchill', 'Unipolar', 'Israel', 'International Court of Justice (ICJ)', 'Greater Polarisation Of Wealth', ]
+// const pol_quiz = {
+//     1: 'Winston Churchill',
+//     2: 'Unipolar',
+//     3: 'Israel',
+//     4: 'International Court of Justice (ICJ)',
+//     5: 'Greater Polarisation Of Wealth',
+// };
+const pol_quiz = [{
+    question: 'Who was the Prime Minister of U.K during WWII ?',
+    answer: {
+        1: 'Margaret Thatcher',
+        2: 'Clement Attlee',
+        3: 'William Ewart Gladstone',
+        4: 'Winston Churchill'
+    },
+    correctAnswer: 'Winston Churchill'
+}, {
+    question: 'Since the end of the Cold War, the world is said to be as?',
+    answer: {
+        1: 'Margaret Thatcher',
+        2: 'Clement Attlee',
+        3: 'William Ewart Gladstone',
+        4: 'Winston Churchill'
+    },
+    correctAnswer: 'Winston Churchill'
+}, {}, {}, {}]
+
 const sport_quiz = [];
 
 const answeres = document.querySelectorAll('.answer');
@@ -66,16 +85,16 @@ function enter_quiz(id) {
     // } else {
     // console.log(index < quiz_test.length);
 
-    function quizTime() {
-        if (time >= 0) {
-            timer.innerText = time;
-            time--;
-        } else {
-            time = 1;
-            // index++;
-            next_question();
-        }
-    }
+    // function quizTime() {
+    //     if (time >= 0) {
+    //         timer.innerText = time;
+    //         time--;
+    //     } else {
+    //         time = 1;
+    //         // index++;
+    //         next_question();
+    //     }
+    // }
     // setInterval(function quizTime() {
     //         console.log(index);
     //         if (index < quiz_test.length) {
@@ -91,19 +110,36 @@ function enter_quiz(id) {
     // clearInterval(quizTime);
     // index = 0;
     // }
-    if (index < quiz_test.length) {
-        console.log('hello');
-        setInterval(quizTime(), 1000)
-    } else {
-        clearInterval(quizTime);
-    }
+    // if (index != 5) {
+    let quizTime = setInterval(() => {
+        if (index < quiz_test.length) {
+            console.log('hello');
+            if (time >= 0) {
+                timer.innerText = time;
+                time--;
+            } else {
+                time = 3;
+                index++;
+                next_question(id);
+            }
+        } else {
+            clearInterval(quizTime);
+            index = 0;
+        }
+
+    }, 1000);
+    // } else {
+    //     clearInterval(quizTime);
+
+    // }
 
     // }
     // else {
     //     index = 0;
     // }
     // }
-    is_answer();
+    console.log(index);
+    is_answer(id);
 }
 
 // exit quiz 
@@ -118,27 +154,30 @@ function display_res() {};
 
 // slide to next question 
 
-console.log(quiz_test.length);
-console.log(quiz_test);
+// console.log(quiz_test.length);
+// console.log(quiz_test);
 // console.log(quiz_test.values());
 
 // function next_question(id) {
-function next_question() {
-    // if (index < quiz_test.length) {
-    setTimeout(() => {
-        quiz_screen.style.transform = `translate(${(index) * -20}%)`;
-        index++;
-    }, 1200)
-
-    // } else {
-    //     let quiz_template = document.getElementById(id);
-    //     timer.style.display = 'none';
-    //     quiz_template.style.display = 'none';
-    // }
+function next_question(id) {
+    if (index < quiz_test.length) {
+        setTimeout(() => {
+            quiz_screen.style.transform = `translate(${(index) * -20}%)`;
+            // index++;
+        }, 1200)
+    } else {
+        let quiz_template = document.getElementById(id);
+        timer.style.display = 'none';
+        quiz_template.style.display = 'none';
+        // index = 0;
+    }
+    console.log(index);
 };
+console.log(index)
+
 
 // check the answer 
-function is_answer() {
+function is_answer(id) {
     Array.from(answeres).forEach(e => e.addEventListener('click', function() {
         // if(e.innerText == pol_quiz[])
         // console.log(quiz_test.indexOf(e));
@@ -159,10 +198,11 @@ function is_answer() {
                 e.parentElement.children[i].style.backgroundColor = 'rgb(219, 255, 219)';
             } else {}
         }
+        console.log(index);
         // console.log(indexOf(e.parentElement))
         // pol_quiz.includes(e.innerText) ? e.style.backgroundColor = 'rgb(219, 255, 219)' : e.style.backgroundColor = 'rgb(256, 219, 219)'
         // console.log(e.parentElement.id);
-        next_question()
+        next_question(id)
     }));
 
 };
