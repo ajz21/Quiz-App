@@ -16,17 +16,18 @@
             3
         </div>
     </div>
-    <div class="quiz-container">
-        <div class="quiz-modules" onclick="enter('qM1')">
+    <div class="quiz-container" id="dashboard">
+        <div class="quiz-modules" onclick="enter(pol_quiz)">
             <h2>Political Science</h2>
         </div>
-        <div class="quiz-modules" id="qM2" onclick="enter('qM2')">
+        <div class="quiz-modules" onclick="enter(econ_quiz)">
             <h2>Economics</h2>
         </div>
-        <div class="quiz-modules" id="qM3">
+        <div class="quiz-modules">
             <h2>Create Custom quizes</h2>
         </div>
     </div>
+    <div class="quiz-container" id="onboard"></div>
     <div class="quiz-container quiz-rules">
         <p style="opacity: 60%; font-size: 33px; text-align: center;">Welcome to the BattleGround!</p>
         <div>
@@ -42,6 +43,9 @@
         <p>Good Luck!</p>
         <button id="enter-btn">Enter</button>
     </div>
+    <!-- <div class="quiz-container quiz-results quiz-rules">
+        <p></p>
+    </div> -->
     <!-- <div class="quiz-template" id="qM1">
         <div class="quiz-screen" id="quiz-screen">
             <div class="quiz-test" id="qT1">
