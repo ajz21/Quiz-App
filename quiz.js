@@ -81,16 +81,18 @@ const econ_quiz = [{
     },
     correctAnswer: 'The GDP deflator is equal to one'
 }, {
-    question: 'The National Income is equal to',
+    question: 'The difference between gross domestic product and net domestic product equals',
     answer: {
-        1: 'Net National Product + Taxes',
-        2: 'Net National Product – Indirect Taxes + Subsidies',
-        3: 'Net National Product – Direct Taxes + Subsidies',
-        4: 'Gross National Product — Subsidies + Taxes'
+        1: 'Transfer payments',
+        2: 'Indirect taxes',
+        3: 'Subsidies',
+        4: 'Depreciation cost'
     },
-    correctAnswer: 'Net National Product – Indirect Taxes + Subsidies'
+    correctAnswer: 'Depreciation cost'
 }];
-
+const random_quiz = [
+    {}, {}, {}, {}, {}
+]
 
 let index = 0;
 let score = 0;
@@ -108,7 +110,7 @@ let dashboard = document.getElementById('dashboard'),
 
 
 
-
+// time--;
 // for sample quiz
 
 // show rules
@@ -124,6 +126,7 @@ function enter(arr) {
 function enter_quiz(arr) {
     dashboard.style.display = 'none';
     onboard.style.display = 'block';
+    timer.style.display = 'flex';
     html = `<div class="quiz-test">
     <p class="question">${index + 1}. ${arr[index].question}</p>
     <p class="answer">${arr[index].answer[1]}</p>
@@ -133,6 +136,23 @@ function enter_quiz(arr) {
     </div>`;
     onboard.innerHTML = html;
     index++;
+
+    // quiz_timer(arr, index);
+    if (index <= arr.length) {
+        console.log('yes');
+        setInterval(() => {
+            if (time >= 0) {
+                console.log(1)
+                time--;
+            } else {
+                console.log(4);
+                time = 3;
+            }
+        }, 1000)
+    } else {
+        console.log(7);
+        clearInterval();
+    }
     is_answer(arr, index);
 }
 
@@ -206,9 +226,26 @@ function back_to_dashboard() {
 
 
 // add timer to quiz
-function quiz_timer() {
+// function quiz_timer(arr, index) {
+//     let timer = document.querySelector('#timer'),
+//         time = timer.innerText;
+//     console.log(time);
 
-}
+//     function quiztimer() {
+//         if (time >= 0) {
+//             time--;
+//         } else {
+//             index++;
+//             time = 3;
+//         }
+//     }
+//     if (index <= arr.length) {
+//         setInterval(quiztimer(), 1000);
+//     } else {
+//         clearInterval(quiztimer());
+//     }
+
+// }
 
 
 // for creating new quiz
