@@ -80,7 +80,7 @@ body {
 .quiz-test {
     background-color: white;
     width: 340px;
-    padding: 4pc;
+    /* padding: 4pc; */
     height: 320px;
     font-family: var(--font);
     color: black;
