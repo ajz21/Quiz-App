@@ -110,7 +110,6 @@ let dashboard = document.getElementById('dashboard'),
 
 
 
-// time--;
 // for sample quiz
 
 // show rules
@@ -119,6 +118,7 @@ function enter(arr) {
     enter_btn.addEventListener('click', () => {
         quiz_rules_card.classList.remove('quiz-rules-display');
         enter_quiz(arr);
+        quiz_timer(arr);
     });
 }
 
@@ -136,23 +136,6 @@ function enter_quiz(arr) {
     </div>`;
     onboard.innerHTML = html;
     index++;
-
-    // quiz_timer(arr, index);
-    if (index <= arr.length) {
-        console.log('yes');
-        setInterval(() => {
-            if (time >= 0) {
-                console.log(1)
-                time--;
-            } else {
-                console.log(4);
-                time = 3;
-            }
-        }, 1000)
-    } else {
-        console.log(7);
-        clearInterval();
-    }
     is_answer(arr, index);
 }
 
@@ -167,6 +150,7 @@ function is_answer(arr, index) {
             if (index < arr.length) {
                 next_question(arr, index);
             } else {
+                index = 0;
                 display_res();
             }
         } else {
@@ -179,6 +163,7 @@ function is_answer(arr, index) {
             if (index < arr.length) {
                 next_question(arr, index);
             } else {
+                index = 0;
                 display_res();
             }
         }
@@ -208,6 +193,8 @@ function display_res() {
     </div>`;
         onboard.innerHTML = html;
         back_to_dashboard();
+        // clearInterval(quizTimer());
+        timer.style.display = 'none';
         score = 0;
         index = 0;
     }, 1000);
@@ -225,6 +212,23 @@ function back_to_dashboard() {
 }
 
 
+function quiz_timer(arr) {
+    setInterval(function quiT() {
+        if (time >= 0 && index <= arr.length) {
+            console.log(index + 'yo');
+            timer.innerText = time;
+            time--;
+        } else {
+            if (index < 5) {
+                time = 2;
+                index++;
+                console.log(index);
+            } else {
+                clearInterval(quiT());
+            }
+        }
+    }, 1000)
+}
 // add timer to quiz
 // function quiz_timer(arr, index) {
 //     let timer = document.querySelector('#timer'),
