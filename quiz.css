@@ -199,7 +199,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: var(--secColor);
+    color: var(--mainColor);
     font-family: var(--font);
     font-size: 40px;
     grid-gap: 2.5pc;
@@ -245,4 +245,46 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media screen and (max-width:500px) {
+    .quiz-container {
+        width: 182px;
+    }
+    .quiz-modules {
+        height: 55px;
+        width: 235px;
+        border-radius: 3px;
+    }
+    .quiz-modules h2 {
+        font-size: 17px;
+    }
+    .quiz-test {
+        width: 260px;
+        height: auto;
+    }
+    .quiz-rules {
+        height: auto;
+        margin-top: 0px;
+        width: 279px;
+        height: auto;
+        padding: 1pc;
+        top: 12pc;
+        grid-gap: 20px;
+    }
+    .quiz-results {
+        font-size: 25px;
+        top: 0pc;
+    }
+    .heading {
+        letter-spacing: 0px;
+        padding: 0px 1pc;
+        width: 280px;
+        font-size: 18px;
+    }
+    .newQuestion,
+    .newAnswer,
+    .title {
+        width: 240px;
+    }
 }
