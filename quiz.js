@@ -90,7 +90,7 @@ const econ_quiz = [{
     },
     correctAnswer: 'Depreciation cost'
 }];
-const random_quiz = [
+let random_quiz = [
     {}, {}, {}, {}, {}
 ]
 
@@ -118,7 +118,6 @@ function enter(arr) {
     quiz_rules_card.classList.add('quiz-rules-display');
     enter_btn.addEventListener('click', () => {
         quiz_rules_card.classList.remove('quiz-rules-display');
-        console.log('mn');
         enter_quiz(arr);
         quiz_timer(arr);
     });
@@ -140,7 +139,6 @@ function enter_quiz(arr) {
     onboard.innerHTML = html;
     index++;
     is_answer(arr, index);
-    console.log('m');
 }
 
 
@@ -181,6 +179,7 @@ function is_answer(arr, index) {
 function next_question(arr, index) {
     if (index >= arr.length) {
         index = 0;
+        score = 0;
     } else {
         setTimeout(() => {
             enter_quiz(arr);
@@ -195,7 +194,7 @@ function display_res(score) {
         html = `<div class="quiz-results quiz-rules">
     <p>YOUR SCORE</p>
     <p>${score} / ${pol_quiz.length}</p>
-    <button id="btd">Back to Dashboard</button>
+    <button id="btd" class="btn-style">Back to Dashboard</button>
     </div>`;
         onboard.innerHTML = html;
         back_to_dashboard();
@@ -209,12 +208,15 @@ function display_res(score) {
 
 // for going back to dashboard
 function back_to_dashboard() {
-    let back_btn = document.getElementById('btd');
-    back_btn.addEventListener('click', () => {
+    let back_btn1 = document.getElementById('btd');
+    back_btn1.addEventListener('click', () => {
         onboard.style.display = 'none';
         dashboard.style.display = 'flex';
         index = 0;
+        score = 0;
+        window.location.reload();
     })
+
 }
 
 
@@ -255,7 +257,97 @@ function quiz_timer(arr) {
 
 // for creating new quiz
 
+// adding quiz title 
+function add_title() {
+    dashboard.style.display = 'none';
+    onboard.style.display = 'flex';
+    html = `<div class="custom">
+    <input type="text" placeholder="Enter the title" class="title" id="title" style="border-radius: 2px;">
+    <button class="btn-style" id="ques-btn">Next</button>
+    </div>`;
+    onboard.innerHTML = html;
+    let title = document.getElementById('title');
+    let add_ques = document.getElementById('ques-btn');
+    add_ques.addEventListener('click', () => {
+        if (title.value != '') {
+            make_custom_quiz(index);
+            create_new_quiz(title.value);
+        } else {
+            alert('ADD YOUR TITLE');
+        }
+    })
+
+}
+
+let newHtml = '';
+
+// creating title for quiz
+function create_new_quiz(title) {
+    newHtml = `<div class="quiz-modules" onclick="enter(random_quiz)">
+    <h2>${title}</h2>
+    </div>`;
+    dashboard.innerHTML += newHtml;
+}
+
 // adding quiz
-// function make_custom_quiz() {
-//     html = ``
-// }
+function make_custom_quiz(index) {
+    if (index <= 4) {
+        html = `<div class="custom">
+        <input type="text" placeholder="Question" class="newQuestion" style="border-radius: 2px;">
+        <input type="text" placeholder="Correct_Answer 1" class="newAnswer" id="Correct_Answer" style="border-color: rgb(31, 195, 31);">
+        <input type="text" placeholder="Answer 2" class="newAnswer" id="answer1">
+        <input type="text" placeholder="Answer 3" class="newAnswer" id="answer2">
+        <input type="text" placeholder="Answer 4" class="newAnswer" id="answer3">
+        <button class="btn-style" id="next-btn">Next</button>
+        </div>`;
+        onboard.innerHTML = html;
+
+        let next = document.getElementById('next-btn');
+        next.addEventListener('click', () => {
+            storeQUiz(index);
+        })
+    } else {
+        html = `<div class="back_dashboard">
+        <p>Your quiz has been successfuly created!</p>
+        <button class="btn-style" id="btD">Back to dashboard</button>
+        </div>`;
+        onboard.innerHTML = html;
+        back_to_dashboard1();
+    }
+
+}
+
+// function to return to dashboard
+function back_to_dashboard1() {
+    let back_btn2 = document.getElementById('btD');
+    let add_custom_quiz = document.getElementById('add_custom_quiz');
+    back_btn2.addEventListener('click', () => {
+        add_custom_quiz.style.display = 'none';
+        onboard.style.display = 'none';
+        dashboard.style.display = 'flex';
+        index = 0;
+    })
+}
+
+// function to store quiz
+function storeQUiz(index) {
+    let newQuestion = document.querySelector('.newQuestion'),
+        newCorrectAnswer = document.querySelector('#Correct_Answer');
+    let answer1 = document.getElementById('answer1'),
+        answer2 = document.getElementById('answer2'),
+        answer3 = document.getElementById('answer3');
+    if (answer1.value && answer2.value && answer3.value && newCorrectAnswer.value && newQuestion.value != '') {
+        random_quiz[index].question = newQuestion.value;
+        random_quiz[index].answer = {
+            1: answer1.value,
+            2: answer2.value,
+            3: answer3.value,
+            4: newCorrectAnswer.value
+        };
+        random_quiz[index].correctAnswer = newCorrectAnswer.value;
+        index++;
+        make_custom_quiz(index);
+    } else {
+        alert('ADD YOUR QUESTION AND ANSWER');
+    }
+}

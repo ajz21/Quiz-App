@@ -79,7 +79,8 @@ body {
 .quiz-test {
     background-color: white;
     /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
-    width: 340px height: 320px;
+    width: 340px;
+    height: 320px;
     font-family: var(--font);
     color: black;
 }
@@ -163,7 +164,7 @@ body {
     display: flex;
 }
 
-.quiz-rules button {
+.btn-style {
     width: 80px;
     height: 35px;
     background-color: var(--mainColor);
@@ -193,6 +194,27 @@ body {
     margin-top: 20px;
 }
 
+.back_dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--secColor);
+    font-family: var(--font);
+    font-size: 40px;
+    grid-gap: 2.5pc;
+}
+
+.back_dashboard p {
+    text-align: center;
+}
+
+.back_dashboard button {
+    width: 115px;
+    height: 48px;
+    margin-top: 20px;
+}
+
 #onboard {
     display: none;
 }
@@ -203,4 +225,24 @@ body {
     text-align: center;
     margin-top: 10px;
     letter-spacing: 5px;
+}
+
+.newQuestion,
+.newAnswer,
+.title {
+    width: 325px;
+    height: 40px;
+    border: solid 1px var(--secColor);
+    border-radius: 3px;
+    padding-left: 10px;
+    outline: none;
+    font-family: var(--font);
+    font-size: 18px;
+}
+
+.custom {
+    grid-gap: 1.5pc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
