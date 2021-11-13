@@ -114,9 +114,11 @@ let dashboard = document.getElementById('dashboard'),
 
 // show rules
 function enter(arr) {
+    index = 0;
     quiz_rules_card.classList.add('quiz-rules-display');
     enter_btn.addEventListener('click', () => {
         quiz_rules_card.classList.remove('quiz-rules-display');
+        console.log('mn');
         enter_quiz(arr);
         quiz_timer(arr);
     });
@@ -125,8 +127,9 @@ function enter(arr) {
 // enter quiz
 function enter_quiz(arr) {
     dashboard.style.display = 'none';
-    onboard.style.display = 'block';
+    onboard.style.display = 'flex';
     timer.style.display = 'flex';
+
     html = `<div class="quiz-test">
     <p class="question">${index + 1}. ${arr[index].question}</p>
     <p class="answer">${arr[index].answer[1]}</p>
@@ -137,13 +140,16 @@ function enter_quiz(arr) {
     onboard.innerHTML = html;
     index++;
     is_answer(arr, index);
+    console.log('m');
 }
 
 
 // check the answer 
 function is_answer(arr, index) {
     const answeres = document.querySelectorAll('.answer');
+
     Array.from(answeres).forEach(e => e.addEventListener('click', function() {
+        time = 15;
         if (e.innerText == arr[index - 1].correctAnswer) {
             e.style.backgroundColor = 'rgb(219, 255, 219)';
             score++;
@@ -151,7 +157,7 @@ function is_answer(arr, index) {
                 next_question(arr, index);
             } else {
                 index = 0;
-                display_res();
+                display_res(score);
             }
         } else {
             e.style.backgroundColor = 'rgb(256, 219, 219)';
@@ -164,7 +170,7 @@ function is_answer(arr, index) {
                 next_question(arr, index);
             } else {
                 index = 0;
-                display_res();
+                display_res(score);
             }
         }
     }))
@@ -184,7 +190,7 @@ function next_question(arr, index) {
 
 
 // display score card 
-function display_res() {
+function display_res(score) {
     setTimeout(() => {
         html = `<div class="quiz-results quiz-rules">
     <p>YOUR SCORE</p>
@@ -193,10 +199,9 @@ function display_res() {
     </div>`;
         onboard.innerHTML = html;
         back_to_dashboard();
-        // clearInterval(quizTimer());
+        clearInterval(quizT);
         timer.style.display = 'none';
         score = 0;
-        index = 0;
     }, 1000);
 
 };
@@ -208,50 +213,49 @@ function back_to_dashboard() {
     back_btn.addEventListener('click', () => {
         onboard.style.display = 'none';
         dashboard.style.display = 'flex';
+        index = 0;
     })
 }
 
 
+let quizT;
+
+// add timer to quiz
 function quiz_timer(arr) {
-    setInterval(function quiT() {
-        if (time >= 0 && index <= arr.length) {
-            console.log(index + 'yo');
-            timer.innerText = time;
-            time--;
-        } else {
-            if (index < 5) {
-                time = 2;
-                index++;
-                console.log(index);
+    quizT = setInterval(() => {
+        if (index <= arr.length) {
+            if (time >= 0) {
+                timer.innerText = time;
+                time--;
             } else {
-                clearInterval(quiT());
+                time = 15;
+                const answeres = document.querySelectorAll('.answer');
+                Array.from(answeres).forEach((e) => {
+                    for (let i = 1; i < 5; i++) {
+                        if (e.parentElement.children[i].innerText == arr[index - 1].correctAnswer) {
+                            e.parentElement.children[i].style.backgroundColor = 'rgb(219, 255, 219)';
+                        } else {}
+                    }
+                    if (index >= arr.length) {
+                        display_res();
+                    }
+                })
+                next_question(arr, index);
             }
+        } else {
+            timer.style.display = 'none';
+            clearInterval(quizT);
         }
+
     }, 1000)
 }
-// add timer to quiz
-// function quiz_timer(arr, index) {
-//     let timer = document.querySelector('#timer'),
-//         time = timer.innerText;
-//     console.log(time);
 
-//     function quiztimer() {
-//         if (time >= 0) {
-//             time--;
-//         } else {
-//             index++;
-//             time = 3;
-//         }
-//     }
-//     if (index <= arr.length) {
-//         setInterval(quiztimer(), 1000);
-//     } else {
-//         clearInterval(quiztimer());
-//     }
 
-// }
 
 
 // for creating new quiz
 
 // adding quiz
+// function make_custom_quiz() {
+//     html = ``
+// }

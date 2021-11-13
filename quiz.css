@@ -12,6 +12,7 @@ body {
 
 body {
     background-color: var(--secColor);
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,15 +74,12 @@ body {
     width: 465px;
     overflow: hidden;
     display: none;
-    /* color: rgb(219, 255, 219); */
-    /* color: rgb(255, 219, 219); */
 }
 
 .quiz-test {
     background-color: white;
-    width: 340px;
-    /* padding: 4pc; */
-    height: 320px;
+    /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+    width: 340px height: 320px;
     font-family: var(--font);
     color: black;
 }
@@ -116,6 +114,7 @@ body {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background-color: white;
+    /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 7px;
     z-index: 1;
 }
