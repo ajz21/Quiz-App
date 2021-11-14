@@ -97,6 +97,9 @@ let random_quiz = [
 let index = 0;
 let score = 0;
 let html = '';
+let newHtml = '';
+let quizT;
+
 let dashboard = document.getElementById('dashboard'),
     onboard = document.getElementById('onboard'),
     quiz_screen = document.getElementById('quiz-screen'),
@@ -175,7 +178,7 @@ function is_answer(arr, index) {
 }
 
 
-// function next_question(id) {
+// function to move to next question
 function next_question(arr, index) {
     if (index >= arr.length) {
         index = 0;
@@ -220,7 +223,6 @@ function back_to_dashboard() {
 }
 
 
-let quizT;
 
 // add timer to quiz
 function quiz_timer(arr) {
@@ -279,7 +281,6 @@ function add_title() {
 
 }
 
-let newHtml = '';
 
 // creating title for quiz
 function create_new_quiz(title) {
