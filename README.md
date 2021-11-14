@@ -4,7 +4,7 @@ A simple app where you can attempt quiz.
 
 ## Demo
 
-<img src="icons/ezgif.com-gif-maker(1).gif" alt="My Project GIF" width="850" height="430">
+<img src="icons/ezgif.com-gif-maker(1).gif" alt="My Project GIF" width="900" height="500">
 
 ## Features 
 
