@@ -11,6 +11,7 @@ A simple app where you can attempt quiz.
 - quiz with timer.
 - Attempt 2 pre-built quizes.
 - Create your own custom quiz. 
+- mobile responsive
 
 ## Languages and tools used
 
